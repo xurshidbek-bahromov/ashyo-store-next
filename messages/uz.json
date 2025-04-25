@@ -1,0 +1,13 @@
+{
+    "HeaderTopContent": {
+        "tashkent": "Toshkent",
+        "about": "Biz haqimizda",
+        "contact": "Bog'lanish",
+        "products": "Mahsulotlar",
+        "language": "Tilni Tanlang"
+    },
+    "HeaderCenterContent": {
+        "category": "Kategoriya",
+        "placeholder": "Nima qidiryapsiz?"
+    }
+}
