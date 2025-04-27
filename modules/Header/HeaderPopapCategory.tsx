@@ -1,5 +1,6 @@
 "use client";
 
+import HeaderPopapCategoryItem from "@/components/HeaderPopapCategoryItem";
 import { Context } from "@/context/Context";
 import { IMG_API } from "@/hooks/getEnv";
 import { Link } from "@/i18n/navigation";
@@ -18,26 +19,7 @@ const HeaderPopapCategory = () => {
       } w-full transition-all duration-500 overflow-hidden absolute flex shadow-md z-10 top-[102px] rounded-[12px]`}
     >
       <div className="w-[30%] bg-[#EBEFF3] py-[43px]">
-        {categories.map((item: HeaderCategoriesType) => (
-          <Link
-            className="group flex items-center gap-[15px] py-[18px] pl-[40px] text-[26] hover:bg-white duration-300 relative"
-            key={item.id}
-            href={"/"}
-          >
-            <Image
-              className="w-[24px] h-[24px]"
-              src={`${IMG_API}/${item.icon}`}
-              alt="categor icon"
-              width={24}
-              height={24}
-              priority
-            />
-            <span>{item.name}</span>
-            <span className="opacity-0 translate-x-[-10px] group-hover:opacity-100 group-hover:translate-x-0 duration-300 absolute right-5 text-black text-[20px]">
-              &gt;
-            </span>
-          </Link>
-        ))}
+        {categories.map((item: HeaderCategoriesType) => <HeaderPopapCategoryItem key={item.id} item={item}/>)}
       </div>
       <div className="w-[70%] bg-white"></div>
     </div>

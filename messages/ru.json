@@ -8,6 +8,7 @@
     },
     "HeaderCenterContent": {
         "category": "Категория",
-        "placeholder": "Что вы ищете?"
+        "placeholder": "Что вы ищете?",
+        "404": "Ничего не найдено"
     }
 }

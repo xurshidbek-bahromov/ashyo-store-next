@@ -8,6 +8,7 @@
     },
     "HeaderCenterContent": {
         "category": "Kategoriya",
-        "placeholder": "Nima qidiryapsiz?"
+        "placeholder": "Nima qidiryapsiz?",
+        "404": "Hech narsa topilmadi"
     }
 }

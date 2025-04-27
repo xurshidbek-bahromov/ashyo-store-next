@@ -7,7 +7,8 @@
         "language": "Select Language"
     },
     "HeaderCenterContent": {
-        "category": "Category",  
-        "placeholder": "What are you looking for?"
+        "category": "Category",
+        "placeholder": "What are you looking for?",
+        "404": "Nothing found"
     }
 }
