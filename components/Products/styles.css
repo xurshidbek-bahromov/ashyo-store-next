@@ -1,0 +1,15 @@
+.products > .swiper > .swiper-wrapper > .swiper-slide{
+    width: 273px !important;
+    display: flex;
+    flex-direction: column;
+    padding: 0 !important;
+    cursor: pointer;
+}   
+
+.products > .swiper > .swiper-wrapper > .swiper-slide > .product-img-wrapper > img{
+    transition: all 0.6s ease;
+}
+
+.products > .swiper > .swiper-wrapper > .swiper-slide > .product-img-wrapper:hover > img{
+    transform: scale(1.2);
+}

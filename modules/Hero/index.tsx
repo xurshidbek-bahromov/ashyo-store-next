@@ -33,7 +33,7 @@ const Hero = () => {
                 <p className="text-[#545D6A] mb-[22px]">{item.description}</p>
                 <Button title="Batafsil" />
               </div>
-              <Image className="absolute bottom-0 right-0" src={`${IMG_API}/${item.image}`} alt="Render Img" width={500} height={700} priority/>
+              <Image className="absolute w-[500px] h-[500px] bottom-0 right-0" src={`${IMG_API}/${item.image}`} alt="Render Img" width={500} height={500} priority/>
             </SwiperSlide>
           ))}
         </Swiper>
