@@ -1,15 +1,26 @@
-.products > .swiper > .swiper-wrapper > .swiper-slide{
+.products>.swiper>.swiper-wrapper>.swiper-slide {
     width: 273px !important;
     display: flex;
     flex-direction: column;
     padding: 0 !important;
     cursor: pointer;
-}   
+    position: relative;
+}
 
-.products > .swiper > .swiper-wrapper > .swiper-slide > .product-img-wrapper > img{
+.products>.swiper>.swiper-wrapper>.swiper-slide>.product-img-wrapper>img {
     transition: all 0.6s ease;
 }
 
-.products > .swiper > .swiper-wrapper > .swiper-slide > .product-img-wrapper:hover > img{
+.products>.swiper>.swiper-wrapper>.swiper-slide>.product-img-wrapper:hover>img {
     transform: scale(1.2);
+}
+
+.swiper-button-prev-custom,
+.swiper-button-next-custom {
+    transition: opacity 0.3s ease;
+}
+
+.swiper-button-prev-custom:hover,
+.swiper-button-next-custom:hover {
+    opacity: 0.8;
 }

@@ -32,6 +32,7 @@ import "./globals.css";
 import { QueryProvider } from "@/query/QueryProvider";
 import { LangContext } from "@/context/Context";
 import Header from "@/modules/Header";
+import Footer from "@/modules/Footer";
 
 export default async function LocaleLayout({
   children,
@@ -57,6 +58,7 @@ export default async function LocaleLayout({
             <LangContext>
               <Header />
               {children}
+              <Footer />
             </LangContext>
           </QueryProvider>
         </NextIntlClientProvider>
