@@ -17,16 +17,18 @@ import { formatPrice } from "@/hooks/formatPrice";
 import SkeletonProduct from "../skeletons/SkeletonProduct";
 import { useRouter } from "@/i18n/navigation";
 import { useQueryClient } from "@tanstack/react-query";
+import { useTranslations } from "next-intl";
 
 const Products: FC<{ title: string }> = ({ title }) => {
   const { data: products, isLoading } = getProducts();
   const router = useRouter();
-  const queryClient = useQueryClient()
+  const queryClient = useQueryClient();
+  const t = useTranslations("Product");
 
-  // function handleClick() {
-  //   router.push(`${item.id}`);
-  //   queryClient.invalidateQueries({ queryKey: ['single_product'] });
-  // }
+  function handleClick(item: ProductType) {
+    router.push(`${item.id}`);
+    queryClient.invalidateQueries({ queryKey: ["single_product"] });
+  }
 
   return (
     <div className="products pb-[80px] relative">
@@ -71,7 +73,7 @@ const Products: FC<{ title: string }> = ({ title }) => {
           products.map((item: ProductType) => (
             <SwiperSlide key={item.id}>
               <div
-                onClick={() => router.push(`${item.id}`)}
+                onClick={() => handleClick(item)}
                 className="relative product-img-wrapper bg-[#EBEFF3] py-[43px] rounded-[6px] w-full flex items-center justify-center mb-[16px]"
               >
                 <Image
@@ -84,16 +86,16 @@ const Products: FC<{ title: string }> = ({ title }) => {
                 />
                 {item.is_aksiya && (
                   <span className="absolute top-3 left-3 flex items-center gap-1 bg-gradient-to-r from-red-500 to-pink-500 text-white text-sm font-semibold px-3 py-[6px] rounded-lg shadow-lg ring-1 ring-white/30 backdrop-blur-md animate-pulse">
-                    🔥 Aksiyada
+                    🔥 {t("discount")}
                   </span>
                 )}
               </div>
-              <div onClick={() => router.push(`${item.id}`)}>
+              <div onClick={() => handleClick(item)}>
                 <p className="line-clamp-2 text-[16px] text-[#545D6A] mb-[28px]">
                   {item.description}
                 </p>
                 <div className="flex justify-between items-end">
-                  <div onClick={() => router.push(`${item.id}`)}>
+                  <div onClick={() => handleClick(item)}>
                     <strong className="font-bold text-[20px] text-black mb-[10px]">
                       {formatPrice(item.price)} uzs
                     </strong>

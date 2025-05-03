@@ -10,5 +10,55 @@
         "category": "Kategoriya",
         "placeholder": "Nima qidiryapsiz?",
         "404": "Hech narsa topilmadi"
+    },
+    "Slider": {
+        "moreBtn": "Ko'proq"
+    },
+    "SinglePage": {
+        "home": "Bosh sahifa",
+        "smartphones": "Smartfonlar",
+        "button1": "Savatga qo'shish",
+        "button2": "Xarid qilish",
+        "muddatto'lov": "uszdan (3 oy muddatga to'lov)",
+        "delivery": "Yetkazib berish va to'lov",
+        "take": "Do'kondan olib ketish",
+        "free": "Bepul",
+        "delivery_today": "Bugun soat 18:00 gacha",
+        "no_order_required": "Olib ketish uchun buyurtma berish shart emas",
+        "home_delivery": "Uyga yetkazish",
+        "delivery_time": "1-3 ish kuni ichida",
+        "tashkent_delivery": "Toshkent bo'ylab bepul yetkazib berish",
+        "best_price_guarantee": "Eng yaxshi narx kafolati",
+        "market_average": "Bozordagi o'rtacha narx",
+        "our_offer": "Bizning taklifimiz",
+        "so'm": "so'm",
+        "savings": "% tejang",
+        "specifications": "ning Xususiyatlari",
+        "customer_reviews": "Mijozlarni fikrlari",
+        "title": "Oxirgi ko'rgan mahsulotlar"
+    },
+    "Footer": {
+        "social_media": "Bizning ijtimoiy tarmoqlarda",
+        "download_app": "Mobil ilovani yuklab oling",
+        "download": "Yuklab oling",
+        "menu": "Menyu",
+        "about_company": "Ashyo haqida",
+        "terms_of_use": "Foydalanish shartlari",
+        "privacy_policy": "Maxfiylik va xavfsizlik siyosati",
+        "return_policy": "Mahsulotlarni qaytarish siyosati",
+        "contact_us": "Biz bilan aloqa",
+        "prompt": "O'zingiz qiziqtirgan savollarni bering",
+        "any_questions": "Savolingiz bormi?",
+        "copyright": "© 2022 Ashyo ro'hatdan o'tgan litsenzalangan bu brend"
+    },
+    "Product": {
+        "discount": "Chegirmada"
+    },
+    "Product_title": {
+        "product": "Eng mashhur mahsulotlar",
+        "best": "Eng yaxshi sotilgan mahsulotlar",
+        "sale": "Sotilgan mahsulotlar",
+        "discount": "Chegirmadagi mahsulotlar",
+        "recently": "Yaqinda ko'rilgan mahsulotlar"
     }
 }

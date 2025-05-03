@@ -10,5 +10,55 @@
         "category": "Category",
         "placeholder": "What are you looking for?",
         "404": "Nothing found"
+    },
+    "Slider": {
+        "moreBtn": "More"
+    },
+    "SinglePage": {
+        "home": "Home",
+        "smartphones": "Smartphones",
+        "button1": "Add to Cart",
+        "button2": "Buy",
+        "muddatto'lov": "from usz (payment for 3 months)",
+        "delivery": "Delivery and payment",
+        "take": "Pick up from store",
+        "free": "Free",
+        "delivery_today": "Today until 18:00",
+        "no_order_required": "No order required for pickup",
+        "home_delivery": "Home delivery",
+        "delivery_time": "Within 1-3 working days",
+        "tashkent_delivery": "Free delivery throughout Tashkent",
+        "best_price_guarantee": "Best price guarantee",
+        "market_average": "Market average price",
+        "our_offer": "Our offer",
+        "so'm": "sum",
+        "savings": "% savings",
+        "specifications": "'s Specifications",
+        "customer_reviews": "Customer reviews",
+        "title": "Recently viewed products"
+    },
+    "Footer": {
+        "social_media": "Our social media",
+        "download_app": "Download the mobile app",
+        "download": "Download",
+        "menu": "Menu",
+        "about_company": "About Ashyo",
+        "terms_of_use": "Terms of Use",
+        "privacy_policy": "Privacy and security policy",
+        "return_policy": "Product return policy",
+        "contact_us": "Contact us",
+        "prompt": "Ask your questions",
+        "any_questions": "Any questions?",
+        "copyright": "© 2022 Ashyo is a registered licensed brand"
+    },
+    "Product": {
+        "discount": "On Sale"
+    },
+    "Product_title": {
+        "product": "Most popular products",
+        "best": "Best selling products",
+        "sale": "Sold products",
+        "discount": "Discounted products",
+        "recently": "Recently viewed products"
     }
 }

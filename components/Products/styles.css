@@ -1,5 +1,6 @@
 .products>.swiper>.swiper-wrapper>.swiper-slide {
-    width: 273px !important;
+    width: 100%;
+    max-width: 273px;
     display: flex;
     flex-direction: column;
     padding: 0 !important;
@@ -23,4 +24,19 @@
 .swiper-button-prev-custom:hover,
 .swiper-button-next-custom:hover {
     opacity: 0.8;
+}
+
+
+@media (max-width: 768px) {
+    .products>.swiper>.swiper-wrapper>.swiper-slide>.product-img-wrapper:hover>img {
+        transform: scale(1.1);
+    }
+}
+
+@media (max-width: 600px) {
+    .swiper-button-prev-custom,
+    .swiper-button-next-custom {
+        width: 30px;
+        height: 30px;
+    }
 }

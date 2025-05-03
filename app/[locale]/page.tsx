@@ -4,19 +4,22 @@ import Brands from "@/modules/Brand";
 import BrandCategory from "@/modules/BrandCategory";
 import Header from "@/modules/Header";
 import Hero from "@/modules/Hero";
+import { useTranslations } from "next-intl";
 
 export default function Home() {
+  const t = useTranslations("Product_title");
+
   return (
     <>
       <Hero />
       <Brands />
-      <Products title="Most popular product"/>
-      <Products title="Best seller product"/>
-      <Products title="Sale product"/>
+      <Products title={t("product")} />
+      <Products title={t("best")} />
+      <Products title={t("sale")} />
       <BrandCategory />
-      <Products title="Aksiyadagi tovarlar"/>
+      <Products title={t("discount")}/>
       <HeroSection />
-      <Products title="Oxirgi ko’rgan mahsulotlar"/>
+      <Products title={t("recently")} />
     </>
   );
 }
