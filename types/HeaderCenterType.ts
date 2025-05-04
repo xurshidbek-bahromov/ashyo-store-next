@@ -1,9 +1,10 @@
-import { ReactNode } from "react";
+import { MouseEventHandler, ReactNode } from "react";
 
 export interface HeaderActionType {
     id?: number,
     icon: ReactNode,
-    actionCount: number
+    actionCount: number,
+    onClick?: MouseEventHandler<HTMLDivElement>
 }
 
 export interface HeaderSearchType {

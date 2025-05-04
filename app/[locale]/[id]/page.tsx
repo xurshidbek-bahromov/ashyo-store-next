@@ -16,6 +16,7 @@ import { getVariations } from "@/service/getVariation";
 import Products from "@/components/Products/Products";
 import Button from "@/components/Button";
 import { useTranslations } from "next-intl";
+import { formatPrice } from "@/hooks/formatPrice";
 
 export default function SinglePage() {
   const params: { id: string } = useParams();
@@ -24,9 +25,9 @@ export default function SinglePage() {
 
   const t = useTranslations("SinglePage");
 
-  const formatPrice = (price: number) => {
-    return new Intl.NumberFormat("uz-UZ").format(price);
-  };
+  // const formatPrice = (price: number) => {
+  //   return new Intl.NumberFormat("uz-UZ").format(price);
+  // };
 
   const monthlyPayment = Math.ceil(singleProduct.price / 3);
 
