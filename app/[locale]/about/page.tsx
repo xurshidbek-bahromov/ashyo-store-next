@@ -1,6 +1,6 @@
 "use client";
+import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
-import Link from "next/link";
 import React from "react";
 import { FaFacebook, FaInstagram, FaTelegram, FaPhone } from "react-icons/fa";
 

@@ -1,6 +1,6 @@
 import Button from "@/components/Button";
+import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
-import Link from "next/link";
 import React from "react";
 
 const ContactUs = () => {

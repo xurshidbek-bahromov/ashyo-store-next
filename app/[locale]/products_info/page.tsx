@@ -2,23 +2,32 @@
 
 import React, { FC, useState } from "react";
 import Image from "next/image";
-import { getProducts } from "@/service/getProducts";
-import { ProductType } from "@/types/ProductType";
-import { IMG_API } from "@/hooks/getEnv";
-import { CompareIcon, ShopIcon } from "@/assets/icons";
-import { formatPrice } from "@/hooks/formatPrice";
-import { Link, useRouter } from "@/i18n/navigation";
+// import { getProducts } from "'service/getProducts'";
+// import { ProductType } from "'types/ProductType'";
+// import { IMG_API } from "'hooks/getEnv'";
+// import { CompareIcon, ShopIcon } from "'assets/icons'";
+// import { formatPrice } from "'hooks/formatPrice'";
+// import { Link, useRouter } from "'i18n/navigation'";
 import { useQueryClient } from "@tanstack/react-query";
 import { useTranslations } from "next-intl";
+import { getProducts } from "@/service/getProducts";
+import { Link, useRouter } from "@/i18n/navigation";
+import { ProductType } from "@/types/ProductType";
 import SkeletonProduct from "@/components/skeletons/SkeletonProduct";
+import { IMG_API } from "@/hooks/getEnv";
+import { formatPrice } from "@/hooks/formatPrice";
 import Button from "@/components/Button";
+import { CompareIcon } from "@/icons";
+import { ShopIcon } from "@/assets/icons";
+// import SkeletonProduct from "'components/skeletons/SkeletonProduct'";
+// import Button from "'components/Button'";
 
-const Products: FC<{ title: string }> = ({ title }) => {
+const Products: FC = () => {
   const { data: products, isLoading } = getProducts();
   const router = useRouter();
   const queryClient = useQueryClient();
   const t = useTranslations("Product");
-  const t2 = useTranslations("SinglePage")
+  const t2 = useTranslations("SinglePage");
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 8;
   const [hoveredProduct, setHoveredProduct] = useState<string | null>(null);
@@ -111,10 +120,8 @@ const Products: FC<{ title: string }> = ({ title }) => {
                 <div
                   key={item.id}
                   className="bg-white rounded-lg shadow-sm hover:shadow-lg transition-all duration-300 p-4 relative overflow-hidden group"
-                  // onMouseEnter={() => setHoveredProduct(item.id)}
                   onMouseLeave={() => setHoveredProduct(null)}
                 >
-                  {/* Product Image with Zoom Effect */}
                   <div className="relative product-img-wrapper bg-[#EBEFF3] py-[43px] rounded-[6px] w-full flex items-center justify-center mb-[16px] overflow-hidden">
                     <div className="relative w-[202px] h-[202px] transition-transform duration-500 group-hover:scale-110">
                       <Image
@@ -131,7 +138,6 @@ const Products: FC<{ title: string }> = ({ title }) => {
                         🔥 {t("discount")}
                       </span>
                     )}
-                    {/* Quick View Button */}
                     <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-[#2c2c2c76] bg-opacity-20">
                       <button onClick={() => handleClick(item)} className="bg-white text-black px-4 py-2 rounded-md font-medium cursor-pointer">
                         {t("view")}
@@ -139,10 +145,7 @@ const Products: FC<{ title: string }> = ({ title }) => {
                     </div>
                   </div>
 
-                  <div
-                    onClick={() => handleClick(item)}
-                    className="cursor-pointer"
-                  >
+                  <div onClick={() => handleClick(item)} className="cursor-pointer">
                     <p className="line-clamp-2 text-[16px] text-[#545D6A] mb-[28px] group-hover:text-black transition-colors duration-300">
                       {item.description}
                     </p>
@@ -173,7 +176,6 @@ const Products: FC<{ title: string }> = ({ title }) => {
               ))}
             </div>
 
-            {/* Modern Pagination */}
             {totalPages > 1 && (
               <div className="flex justify-center mt-12">
                 <nav className="flex items-center gap-2">
@@ -189,12 +191,7 @@ const Products: FC<{ title: string }> = ({ title }) => {
                       viewBox="0 0 24 24"
                       stroke="currentColor"
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M15 19l-7-7 7-7"
-                      />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                     </svg>
                   </button>
 
@@ -232,12 +229,7 @@ const Products: FC<{ title: string }> = ({ title }) => {
                       viewBox="0 0 24 24"
                       stroke="currentColor"
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M9 5l7 7-7 7"
-                      />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                     </svg>
                   </button>
                 </nav>
