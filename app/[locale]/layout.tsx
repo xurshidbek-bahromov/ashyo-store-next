@@ -33,6 +33,7 @@ import { QueryProvider } from "@/query/QueryProvider";
 import { LangContext } from "@/context/Context";
 import Header from "@/modules/Header";
 import Footer from "@/modules/Footer";
+import Products from "@/components/Products/Products";
 
 export default async function LocaleLayout({
   children,

@@ -35,7 +35,8 @@
         "savings": "% savings",
         "specifications": "'s Specifications",
         "customer_reviews": "Customer reviews",
-        "title": "Recently viewed products"
+        "title": "Recently viewed products",
+        "products": "Products"
     },
     "Footer": {
         "social_media": "Our social media",
@@ -52,7 +53,8 @@
         "copyright": "© 2022 Ashyo is a registered licensed brand"
     },
     "Product": {
-        "discount": "On Sale"
+        "discount": "On Sale",
+        "view": "Quick View"
     },
     "Product_title": {
         "product": "Most popular products",

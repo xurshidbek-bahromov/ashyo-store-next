@@ -67,7 +67,7 @@ const HeaderForm = () => {
         <Input
           value={searchValue}
           onChange={handleSearch}
-          extraStyle="w-full"
+          extraClass="w-full"
           placeholder={t("placeholder")}
           type="text"
         />

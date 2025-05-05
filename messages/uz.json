@@ -35,7 +35,8 @@
         "savings": "% tejang",
         "specifications": "ning Xususiyatlari",
         "customer_reviews": "Mijozlarni fikrlari",
-        "title": "Oxirgi ko'rgan mahsulotlar"
+        "title": "Oxirgi ko'rgan mahsulotlar",
+        "products": "Mahsulotlar"
     },
     "Footer": {
         "social_media": "Bizning ijtimoiy tarmoqlarda",
@@ -52,7 +53,8 @@
         "copyright": "© 2022 Ashyo ro'hatdan o'tgan litsenzalangan bu brend"
     },
     "Product": {
-        "discount": "Chegirmada"
+        "discount": "Chegirmada",
+        "view": "Ko'z tashlash"
     },
     "Product_title": {
         "product": "Eng mashhur mahsulotlar",

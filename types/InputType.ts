@@ -1,9 +1,11 @@
-import { ChangeEventHandler } from "react";
+import { ChangeEvent, ChangeEventHandler, FocusEventHandler } from "react";
 
 export interface InputType {
+    type:"text" | "email" | "password",
     placeholder:string,
-    extraStyle?:string,
-    type:"text" | "password" | "number" | "tel",
+    extraClass?:string,
     onChange?:ChangeEventHandler<HTMLInputElement>,
-    value:string
+    onBlur?:FocusEventHandler<HTMLInputElement>,
+    name?:string,
+    value?:string
 }
