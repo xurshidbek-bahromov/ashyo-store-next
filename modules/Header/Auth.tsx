@@ -14,12 +14,13 @@ import { Login, Register } from "@/service/Auth";
 import { Dispatch, FC, FormEvent, SetStateAction, useState } from "react";
 import { Loader2 } from "lucide-react";
 import { toast } from "sonner";
-
 import { useRouter } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 
 export const Auth: FC<{ closeAction: Dispatch<SetStateAction<boolean>> }> = ({
   closeAction,
 }) => {
+  const t = useTranslations("Auth");
   const router = useRouter();
   const [activeTab, setActiveTab] = useState<"login" | "register">("login");
   const [registerError, setRegisterError] = useState<string | null>(null);
@@ -27,11 +28,11 @@ export const Auth: FC<{ closeAction: Dispatch<SetStateAction<boolean>> }> = ({
 
   const login = Login({
     onError: (error) => {
-      setLoginError(error.message || "Login failed. Please try again.");
+      setLoginError(error.message || t("login_error"));
     },
     onSuccess: () => {
-      toast.success("Login successful", {
-        description: "You have been logged in successfully.",
+      toast.success(t("login_success"), {
+        description: t("login_success_desc"),
       });
       closeAction(false);
       router.push('/profile');
@@ -40,11 +41,11 @@ export const Auth: FC<{ closeAction: Dispatch<SetStateAction<boolean>> }> = ({
 
   const register = Register({
     onError: (error) => {
-      setRegisterError(error.message || "Registration failed. Please try again.");
+      setRegisterError(error.message || t("register_error"));
     },
     onSuccess: () => {
-      toast.success("Registration successful", {
-        description: "Your account has been created. Please login.",
+      toast.success(t("register_success"), {
+        description: t("register_success_desc"),
       });
       setActiveTab("login");
       setRegisterError(null);
@@ -59,19 +60,19 @@ export const Auth: FC<{ closeAction: Dispatch<SetStateAction<boolean>> }> = ({
     const password = form.password.value.trim();
 
     if (!email || !password) {
-      setLoginError("Please fill in all fields");
+      setLoginError(t("validation_required"));
       return;
     }
 
     const loginPromise = login.mutateAsync({ email, password });
     
     toast.promise(loginPromise, {
-      loading: "Logging in...",
+      loading: t("logging_in"),
       success: () => {
         closeAction(false);
-        return "Logged in successfully!";
+        return t("login_success");
       },
-      error: "Failed to login. Please try again.",
+      error: t("login_error"),
     });
   }
 
@@ -83,12 +84,12 @@ export const Auth: FC<{ closeAction: Dispatch<SetStateAction<boolean>> }> = ({
     const password = form.password.value.trim();
 
     if (!fullname || !email || !password) {
-      setRegisterError("Please fill in all fields");
+      setRegisterError(t("validation_required"));
       return;
     }
 
     if (password.length < 6) {
-      setRegisterError("Password must be at least 6 characters");
+      setRegisterError(t("password_length_error"));
       return;
     }
 
@@ -97,12 +98,12 @@ export const Auth: FC<{ closeAction: Dispatch<SetStateAction<boolean>> }> = ({
     const registerPromise = register.mutateAsync({ fullname, email, password });
     
     toast.promise(registerPromise, {
-      loading: "Creating account...",
+      loading: t("creating_account"),
       success: () => {
         setActiveTab("login");
-        return "Account created successfully!";
+        return t("register_success");
       },
-      error: "Failed to create account. Please try again.",
+      error: t("register_error"),
     });
   }
 
@@ -118,18 +119,16 @@ export const Auth: FC<{ closeAction: Dispatch<SetStateAction<boolean>> }> = ({
       className="w-[400px]"
     >
       <TabsList className="grid w-full grid-cols-2">
-        <TabsTrigger value="login">Login</TabsTrigger>
-        <TabsTrigger value="register">Register</TabsTrigger>
+        <TabsTrigger value="login">{t("login_tab")}</TabsTrigger>
+        <TabsTrigger value="register">{t("register_tab")}</TabsTrigger>
       </TabsList>
 
       {/* Login */}
       <TabsContent value="login">
         <Card>
           <CardHeader>
-            <CardTitle className="text-2xl">Welcome Back</CardTitle>
-            <CardDescription>
-              Enter your credentials to access your account
-            </CardDescription>
+            <CardTitle className="text-2xl">{t("login_title")}</CardTitle>
+            <CardDescription>{t("login_description")}</CardDescription>
           </CardHeader>
           <form onSubmit={handleLogin}>
             <CardContent className="space-y-4">
@@ -139,24 +138,24 @@ export const Auth: FC<{ closeAction: Dispatch<SetStateAction<boolean>> }> = ({
                 </div>
               )}
               <div className="space-y-2">
-                <Label htmlFor="email">Email</Label>
+                <Label htmlFor="email">{t("email_label")}</Label>
                 <Input
                   name="email"
                   autoComplete="email"
                   id="email"
                   type="email"
-                  placeholder="your@email.com"
+                  placeholder={t("email_placeholder")}
                   required
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="password">Password</Label>
+                <Label htmlFor="password">{t("password_label")}</Label>
                 <Input
                   name="password"
                   autoComplete="current-password"
                   type="password"
                   id="password"
-                  placeholder="••••••••"
+                  placeholder={t("password_placeholder")}
                   required
                   minLength={6}
                 />
@@ -166,12 +165,12 @@ export const Auth: FC<{ closeAction: Dispatch<SetStateAction<boolean>> }> = ({
                   type="button" 
                   className="text-primary hover:underline"
                   onClick={() => {
-                    toast.info("Password reset", {
-                      description: "A password reset link has been sent to your email.",
+                    toast.info(t("reset_password_toast"), {
+                      description: t("reset_password_desc"),
                     });
                   }}
                 >
-                  Forgot password?
+                  {t("forgot_password")}
                 </button>
               </div>
             </CardContent>
@@ -184,9 +183,9 @@ export const Auth: FC<{ closeAction: Dispatch<SetStateAction<boolean>> }> = ({
                 {login.isPending ? (
                   <>
                     <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    Logging in...
+                    {t("logging_in")}
                   </>
-                ) : "Login"}
+                ) : t("login_button")}
               </Button>
             </CardFooter>
           </form>
@@ -197,10 +196,8 @@ export const Auth: FC<{ closeAction: Dispatch<SetStateAction<boolean>> }> = ({
       <TabsContent value="register">
         <Card>
           <CardHeader>
-            <CardTitle className="text-2xl">Create Account</CardTitle>
-            <CardDescription>
-              Fill in your details to create a new account
-            </CardDescription>
+            <CardTitle className="text-2xl">{t("register_title")}</CardTitle>
+            <CardDescription>{t("register_description")}</CardDescription>
           </CardHeader>
           <form onSubmit={handleRegister}>
             <CardContent className="space-y-4">
@@ -210,37 +207,37 @@ export const Auth: FC<{ closeAction: Dispatch<SetStateAction<boolean>> }> = ({
                 </div>
               )}
               <div className="space-y-2">
-                <Label htmlFor="fullname">Full Name</Label>
+                <Label htmlFor="fullname">{t("fullname_label")}</Label>
                 <Input
                   id="fullname"
                   name="fullname"
                   type="text"
-                  placeholder="Palonchiyev Pistonchi"
+                  placeholder={t("fullname_placeholder")}
                   required
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="email">Email</Label>
+                <Label htmlFor="email">{t("email_label")}</Label>
                 <Input
                   id="email"
                   name="email"
                   type="email"
-                  placeholder="your@email.com"
+                  placeholder={t("email_placeholder")}
                   required
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="password">Password</Label>
+                <Label htmlFor="password">{t("password_label")}</Label>
                 <Input
                   id="password"
                   name="password"
                   type="password"
-                  placeholder="••••••••"
+                  placeholder={t("password_placeholder")}
                   required
                   minLength={6}
                 />
                 <p className="text-xs text-muted-foreground">
-                  Password must be at least 6 characters
+                  {t("password_requirement")}
                 </p>
               </div>
             </CardContent>
@@ -253,18 +250,18 @@ export const Auth: FC<{ closeAction: Dispatch<SetStateAction<boolean>> }> = ({
                 {register.isPending ? (
                   <>
                     <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    Creating account...
+                    {t("creating_account")}
                   </>
-                ) : "Register"}
+                ) : t("register_button")}
               </Button>
               <p className="text-sm text-center text-muted-foreground">
-                Already have an account?{" "}
+                {t("already_have_account")}{" "}
                 <button 
                   type="button" 
                   className="text-primary hover:underline"
                   onClick={() => setActiveTab("login")}
                 >
-                  Sign in
+                  {t("sign_in_link")}
                 </button>
               </p>
             </CardFooter>
