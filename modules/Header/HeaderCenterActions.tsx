@@ -34,7 +34,7 @@ const HeaderCenterActions = () => {
 
   return (
     <>
-      <div className="flex gap-[15px]">
+      <div className="flex gap-2 md:gap-[15px] flex-wrap md:flex-nowrap">
         {actionList.map((item: HeaderActionType) => {
             return item.id == 4 ? <HeaderAction onClick={() => setOpen(true)} key={item.id} actionCount={item.actionCount} icon={item.icon}/> : <HeaderAction key={item.id} actionCount={item.actionCount} icon={item.icon}/>
         })}

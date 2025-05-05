@@ -65,7 +65,7 @@ export const Auth: FC<{ closeAction: Dispatch<SetStateAction<boolean>> }> = ({
     }
 
     const loginPromise = login.mutateAsync({ email, password });
-    
+
     toast.promise(loginPromise, {
       loading: t("logging_in"),
       success: () => {
@@ -94,9 +94,9 @@ export const Auth: FC<{ closeAction: Dispatch<SetStateAction<boolean>> }> = ({
     }
 
     setRegisterError(null);
-    
+
     const registerPromise = register.mutateAsync({ fullname, email, password });
-    
+
     toast.promise(registerPromise, {
       loading: t("creating_account"),
       success: () => {
@@ -108,8 +108,8 @@ export const Auth: FC<{ closeAction: Dispatch<SetStateAction<boolean>> }> = ({
   }
 
   return (
-    <Tabs 
-      defaultValue="login" 
+    <Tabs
+      defaultValue="login"
       value={activeTab}
       onValueChange={(value) => {
         setActiveTab(value as "login" | "register");
@@ -118,22 +118,32 @@ export const Auth: FC<{ closeAction: Dispatch<SetStateAction<boolean>> }> = ({
       }}
       className="w-[400px]"
     >
-      <TabsList className="grid w-full grid-cols-2">
-        <TabsTrigger value="login">{t("login_tab")}</TabsTrigger>
-        <TabsTrigger value="register">{t("register_tab")}</TabsTrigger>
+      <TabsList className="grid w-full grid-cols-2 bg-blue-100 text-[#134E9B] rounded-xl p-1 shadow-md">
+        <TabsTrigger
+          value="login"
+          className="data-[state=active]:bg-blue-500 data-[state=active]:text-white rounded-lg transition-colors duration-300"
+        >
+          {t("login_tab")}
+        </TabsTrigger>
+        <TabsTrigger
+          value="register"
+          className="data-[state=active]:bg-blue-500 data-[state=active]:text-white rounded-lg transition-colors duration-300"
+        >
+          {t("register_tab")}
+        </TabsTrigger>
       </TabsList>
 
       {/* Login */}
       <TabsContent value="login">
-        <Card>
-          <CardHeader>
+        <Card className="bg-gradient-to-b from-blue-50 to-white border border-blue-200 shadow-xl rounded-2xl">
+          <CardHeader className="text-blue-800">
             <CardTitle className="text-2xl">{t("login_title")}</CardTitle>
             <CardDescription>{t("login_description")}</CardDescription>
           </CardHeader>
           <form onSubmit={handleLogin}>
             <CardContent className="space-y-4">
               {loginError && (
-                <div className="text-sm text-red-500 px-2 py-1.5 rounded-md bg-red-50">
+                <div className="text-sm text-red-500 px-2 py-1.5 rounded-md bg-red-100 border border-red-300 shadow-sm">
                   {loginError}
                 </div>
               )}
@@ -146,6 +156,7 @@ export const Auth: FC<{ closeAction: Dispatch<SetStateAction<boolean>> }> = ({
                   type="email"
                   placeholder={t("email_placeholder")}
                   required
+                  className="focus-visible:ring-2 focus-visible:ring-[#134E9B] rounded-md border-blue-300"
                 />
               </div>
               <div className="space-y-2">
@@ -158,12 +169,13 @@ export const Auth: FC<{ closeAction: Dispatch<SetStateAction<boolean>> }> = ({
                   placeholder={t("password_placeholder")}
                   required
                   minLength={6}
+                  className="focus-visible:ring-2 focus-visible:ring-blue-400 rounded-md border-blue-300"
                 />
               </div>
               <div className="text-right text-sm">
-                <button 
-                  type="button" 
-                  className="text-primary hover:underline"
+                <button
+                  type="button"
+                  className="text-blue-600 hover:underline font-medium"
                   onClick={() => {
                     toast.info(t("reset_password_toast"), {
                       description: t("reset_password_desc"),
@@ -175,9 +187,9 @@ export const Auth: FC<{ closeAction: Dispatch<SetStateAction<boolean>> }> = ({
               </div>
             </CardContent>
             <CardFooter>
-              <Button 
-                type="submit" 
-                className="w-full"
+              <Button
+                type="submit"
+                className="w-full bg-[#134E9B] hover:bg-[#134e9b82] duration-500 cursor-pointer text-white font-semibold shadow-lg rounded-md"
                 disabled={login.isPending}
               >
                 {login.isPending ? (
@@ -194,15 +206,15 @@ export const Auth: FC<{ closeAction: Dispatch<SetStateAction<boolean>> }> = ({
 
       {/* Register */}
       <TabsContent value="register">
-        <Card>
-          <CardHeader>
+        <Card className="bg-gradient-to-b from-blue-50 to-white border border-blue-200 shadow-xl rounded-2xl">
+          <CardHeader className="text-blue-800">
             <CardTitle className="text-2xl">{t("register_title")}</CardTitle>
             <CardDescription>{t("register_description")}</CardDescription>
           </CardHeader>
           <form onSubmit={handleRegister}>
             <CardContent className="space-y-4">
               {registerError && (
-                <div className="text-sm text-red-500 px-2 py-1.5 rounded-md bg-red-50">
+                <div className="text-sm text-red-500 px-2 py-1.5 rounded-md bg-red-100 border border-red-300 shadow-sm">
                   {registerError}
                 </div>
               )}
@@ -214,6 +226,7 @@ export const Auth: FC<{ closeAction: Dispatch<SetStateAction<boolean>> }> = ({
                   type="text"
                   placeholder={t("fullname_placeholder")}
                   required
+                  className="focus-visible:ring-2 focus-visible:ring-blue-400 rounded-md border-blue-300"
                 />
               </div>
               <div className="space-y-2">
@@ -224,6 +237,7 @@ export const Auth: FC<{ closeAction: Dispatch<SetStateAction<boolean>> }> = ({
                   type="email"
                   placeholder={t("email_placeholder")}
                   required
+                  className="focus-visible:ring-2 focus-visible:ring-blue-400 rounded-md border-blue-300"
                 />
               </div>
               <div className="space-y-2">
@@ -235,6 +249,7 @@ export const Auth: FC<{ closeAction: Dispatch<SetStateAction<boolean>> }> = ({
                   placeholder={t("password_placeholder")}
                   required
                   minLength={6}
+                  className="focus-visible:ring-2 focus-visible:ring-blue-400 rounded-md border-blue-300"
                 />
                 <p className="text-xs text-muted-foreground">
                   {t("password_requirement")}
@@ -242,9 +257,9 @@ export const Auth: FC<{ closeAction: Dispatch<SetStateAction<boolean>> }> = ({
               </div>
             </CardContent>
             <CardFooter className="flex-col gap-2">
-              <Button 
-                type="submit" 
-                className="w-full"
+              <Button
+                type="submit"
+                className="w-full bg-[#134E9B] hover:bg-[#134e9b82] duration-500 cursor-pointer text-white font-semibold shadow-lg rounded-md"
                 disabled={register.isPending}
               >
                 {register.isPending ? (
@@ -256,9 +271,9 @@ export const Auth: FC<{ closeAction: Dispatch<SetStateAction<boolean>> }> = ({
               </Button>
               <p className="text-sm text-center text-muted-foreground">
                 {t("already_have_account")}{" "}
-                <button 
-                  type="button" 
-                  className="text-primary hover:underline"
+                <button
+                  type="button"
+                  className="text-blue-600 hover:underline font-medium"
                   onClick={() => setActiveTab("login")}
                 >
                   {t("sign_in_link")}

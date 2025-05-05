@@ -7,7 +7,7 @@ import HeaderPopapCategory from "./HeaderPopapCategory";
 
 const HeaderCenter = () => {
   return (
-    <div className="flex relative items-center justify-between containers !py-[30px]">
+    <div className="flex flex-wrap md:flex-nowrap relative items-center justify-between containers !py-[30px] gap-4 md:gap-0">
       <Link className="flex items-center translate-x-[-15px]" href={"/"}>
         <Image className="w-[48px] h-[48px] scale-[1.5]" src={'/logo.svg'} alt="logo" width={48} height={48} priority />
         <span className="translate-x-[-5px] text-[#134E9B] text-[36px] leading-[100%] font-black">Ashyo</span>
