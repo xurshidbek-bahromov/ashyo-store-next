@@ -8,7 +8,7 @@ interface LoginType {
 }
 
 interface RegisterType {
-  fullName: string;
+  fullname: string;
   email: string;
   password: string;
 }

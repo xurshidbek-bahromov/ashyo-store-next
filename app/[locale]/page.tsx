@@ -19,7 +19,6 @@ export default function Home() {
       <BrandCategory />
       <Products title={t("discount")}/>
       <HeroSection />
-      <Products title={t("recently")} />
     </>
   );
 }

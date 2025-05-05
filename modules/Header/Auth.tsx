@@ -15,9 +15,12 @@ import { Dispatch, FC, FormEvent, SetStateAction, useState } from "react";
 import { Loader2 } from "lucide-react";
 import { toast } from "sonner";
 
+import { useRouter } from 'next/navigation';
+
 export const Auth: FC<{ closeAction: Dispatch<SetStateAction<boolean>> }> = ({
   closeAction,
 }) => {
+  const router = useRouter();
   const [activeTab, setActiveTab] = useState<"login" | "register">("login");
   const [registerError, setRegisterError] = useState<string | null>(null);
   const [loginError, setLoginError] = useState<string | null>(null);
@@ -31,6 +34,7 @@ export const Auth: FC<{ closeAction: Dispatch<SetStateAction<boolean>> }> = ({
         description: "You have been logged in successfully.",
       });
       closeAction(false);
+      router.push('/profile');
     },
   });
 
@@ -74,11 +78,11 @@ export const Auth: FC<{ closeAction: Dispatch<SetStateAction<boolean>> }> = ({
   function handleRegister(e: FormEvent) {
     e.preventDefault();
     const form = e.target as HTMLFormElement;
-    const fullName = form.fullname.value.trim();
+    const fullname = form.fullname.value.trim();
     const email = form.email.value.trim();
     const password = form.password.value.trim();
 
-    if (!fullName || !email || !password) {
+    if (!fullname || !email || !password) {
       setRegisterError("Please fill in all fields");
       return;
     }
@@ -90,7 +94,7 @@ export const Auth: FC<{ closeAction: Dispatch<SetStateAction<boolean>> }> = ({
 
     setRegisterError(null);
     
-    const registerPromise = register.mutateAsync({ fullName, email, password });
+    const registerPromise = register.mutateAsync({ fullname, email, password });
     
     toast.promise(registerPromise, {
       loading: "Creating account...",
